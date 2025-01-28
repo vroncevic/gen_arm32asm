@@ -1,0 +1,12 @@
+name: gen_arm32asm_toc
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.md'
+jobs:
+  generateTOC:
+    name: gen_arm32asm_toc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/toc-generator@v4

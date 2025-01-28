@@ -1,0 +1,12 @@
+title: "gen_arm32asm"
+description: "Generator for ARM 32-bit assembly"
+author: "VLadimir Roncevic"
+email: "elektron.ronca@gmail.com"
+url: "https://vroncevic.github.io/gen_arm32asm/"
+baseurl: ""
+markdown: kramdown
+theme: jekyll-theme-cayman
+source: .
+exclude:
+  - "gen_arm32asm"
+  - "tests"
