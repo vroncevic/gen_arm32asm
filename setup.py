@@ -75,7 +75,6 @@ setup(
     packages=find_packages(include=['gen_arm32asm', 'gen_arm32asm.pro']),
     install_requires=['ats-utilities'],
     extras_require={'dev': ['pytest', 'mypy', 'flake8']},
-    python_requires='>=3.10',
     package_data={
         'gen_arm32asm': [
             'py.typed',
