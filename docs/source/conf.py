@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 project: str = 'gen_arm32asm'
 project_copyright: str = '2025, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author: str = 'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version: str = '1.0.0'
+version: str = '1.0.1'
 release: str = 'https://github.com/vroncevic/gen_arm32asm/releases'
 extensions: List[str] = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 templates_path: List[str] = ['_templates']
