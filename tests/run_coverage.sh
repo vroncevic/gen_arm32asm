@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   gen_arm32asm
-# @version v1.0.0
+# @version v1.0.1
 # @date    Sat Jan 25 19:48:16 AM CEST 2025
 # @company None, free software to use 2025
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
 '''
@@ -23,13 +23,13 @@ Info
 from __future__ import print_function
 from typing import List, Optional
 from os.path import abspath, dirname, join
-from setuptools import setup
+from setuptools import setup, find_packages
 
 __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2025, https://vroncevic.github.io/gen_arm32asm'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.0'
+__version__: str = '1.0.1'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Updated'
@@ -61,7 +61,7 @@ APPROVED_LICENSES: List[str] = [
 PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_arm32asm',
-    version='1.0.0',
+    version='1.0.1',
     description='Generating ARM 32-bit asm project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -69,11 +69,13 @@ setup(
     license='GPL-3.0-or-later',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    keywords='Unix, Linux, Development, assembly, risc-v, generator',
+    keywords='Unix, Linux, Development, assembly, ARM32, generator',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
-    packages=['gen_arm32asm', 'gen_arm32asm.pro'],
+    packages=find_packages(include=['gen_arm32asm', 'gen_arm32asm.pro']),
     install_requires=['ats-utilities'],
+    extras_require={'dev': ['pytest', 'mypy', 'flake8']},
+    python_requires='>=3.10',
     package_data={
         'gen_arm32asm': [
             'py.typed',

@@ -4,8 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gen_arm32asm"
-version = "1.0.0"
-description = "Your project description"
+version = "1.0.1"
+description = "Generate ARM 32-bit asm project"
 authors = [{name = "Vladimir Roncevic", email = "elektron.ronca@gmail.com"}]
 license = {text = "GPL-3.0-or-later"}
-

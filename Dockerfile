@@ -38,7 +38,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     autoconf \
     automake \
     autotools-dev \
-    gcc-riscv64-linux-gnu \
+    binutils-arm-linux-gnueabi \
+    gcc-10-arm-linux-gnueabi \
     qemu-user-static
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
