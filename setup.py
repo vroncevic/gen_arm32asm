@@ -29,7 +29,7 @@ __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2025, https://vroncevic.github.io/gen_arm32asm'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.1'
+__version__: str = '1.0.2'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Updated'
@@ -61,7 +61,7 @@ APPROVED_LICENSES: List[str] = [
 PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_arm32asm',
-    version='1.0.1',
+    version='1.0.2',
     description='Generating ARM 32-bit asm project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',

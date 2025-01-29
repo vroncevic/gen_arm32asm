@@ -60,22 +60,22 @@
 <span class="sd">    Loads a base info, creates a CLI interface and run operations.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">realpath</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
-<span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">exists</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">realpath</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">getcwd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">argparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Namespace</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.splash</span> <span class="kn">import</span> <span class="n">Splash</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.logging</span> <span class="kn">import</span> <span class="n">ATSLogger</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.cli</span> <span class="kn">import</span> <span class="n">ATSCli</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.console_io.error</span> <span class="kn">import</span> <span class="n">error_message</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_value_error</span> <span class="kn">import</span> <span class="n">ATSValueError</span>
-    <span class="kn">from</span> <span class="nn">gen_arm32asm.pro</span> <span class="kn">import</span> <span class="n">GenARM32ASMPro</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.splash</span><span class="w"> </span><span class="kn">import</span> <span class="n">Splash</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">ATSLogger</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.cli</span><span class="w"> </span><span class="kn">import</span> <span class="n">ATSCli</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.console_io.error</span><span class="w"> </span><span class="kn">import</span> <span class="n">error_message</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.console_io.verbose</span><span class="w"> </span><span class="kn">import</span> <span class="n">verbose_message</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.console_io.success</span><span class="w"> </span><span class="kn">import</span> <span class="n">success_message</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.exceptions.ats_type_error</span><span class="w"> </span><span class="kn">import</span> <span class="n">ATSTypeError</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ats_utilities.exceptions.ats_value_error</span><span class="w"> </span><span class="kn">import</span> <span class="n">ATSValueError</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">gen_arm32asm.pro</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenARM32ASMPro</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
     <span class="c1"># Force close python ATS ##################################################</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="vm">__file__</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ats_error_message</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -84,14 +84,14 @@
 <span class="n">__copyright__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;(C) 2025, https://vroncevic.github.io/gen_arm32asm&#39;</span>
 <span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;1.0.1&#39;</span>
+<span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;1.0.2&#39;</span>
 <span class="n">__maintainer__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="GenARM32ASM"><a class="viewcode-back" href="../gen_arm32asm.html#gen_arm32asm.GenARM32ASM">[docs]</a><span class="k">class</span> <span class="nc">GenARM32ASM</span><span class="p">(</span><span class="n">ATSCli</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="GenARM32ASM"><a class="viewcode-back" href="../gen_arm32asm.html#gen_arm32asm.GenARM32ASM">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">GenARM32ASM</span><span class="p">(</span><span class="n">ATSCli</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defines class GenARM32ASM with attribute(s) and method(s).</span>
 <span class="sd">        Loads a base info, creates a CLI interface and run operations.</span>
 
@@ -115,8 +115,8 @@
     <span class="n">_LOGO</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;/conf/gen_arm32asm.logo&#39;</span>
     <span class="n">_OPS</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="s1">&#39;--name&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;--verbose&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initials GenARM32ASM constructor.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
@@ -150,8 +150,8 @@
                 <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;activate verbose mode for tool&#39;</span>
             <span class="p">)</span>
 
-<div class="viewcode-block" id="GenARM32ASM.process"><a class="viewcode-back" href="../gen_arm32asm.html#gen_arm32asm.GenARM32ASM.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="GenARM32ASM.process"><a class="viewcode-back" href="../gen_arm32asm.html#gen_arm32asm.GenARM32ASM.process">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Processes and runs tool operation.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
@@ -169,10 +169,10 @@
                         <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> missing name argument&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="k">return</span> <span class="n">status</span>
-                <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
                     <span class="n">error_message</span><span class="p">([</span>
                         <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-                        <span class="sa">f</span><span class="s1">&#39;project with name [</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">] exists&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;project with name [</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">] exists&#39;</span>
                     <span class="p">])</span>
                     <span class="k">return</span> <span class="n">status</span>
                 <span class="n">gen</span><span class="p">:</span> <span class="n">GenARM32ASMPro</span> <span class="o">=</span> <span class="n">GenARM32ASMPro</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
@@ -191,7 +191,7 @@
                 <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
                     <span class="n">success_message</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">])</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s1">&#39;generation project </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> done&#39;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s1">&#39;generation project </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> done&#39;</span><span class="p">,</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_INFO</span>
                     <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
