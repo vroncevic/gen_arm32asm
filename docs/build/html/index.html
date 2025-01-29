@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Create ARM 32-bit asm project skeleton &#8212; gen_arm32asm https://github.com/vroncevic/gen_arm32asm/releases documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -72,18 +72,18 @@ other information that should be provided before the modules are installed.</p>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python3_build.yml"><img alt="gen_arm32asm python3 build" src="https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python3_build.yml/badge.svg" /></a></p>
 <p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_arm32asm/releases">page</a> download and extract release archive.</p>
 <p>To install this set of modules type the following</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf gen_arm32asm-x.y.z.tar.gz
-<span class="nb">cd</span> gen_arm32asm-x.y.z
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>xvzf<span class="w"> </span>gen_arm32asm-x.y.z.tar.gz
+<span class="nb">cd</span><span class="w"> </span>gen_arm32asm-x.y.z
 <span class="c1">#python3</span>
-pip3 install -r requirements.txt
-python3 setup.py install_lib
-python3 setup.py install_egg_info
-python3 setup.py install_data
+pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python3<span class="w"> </span>setup.py<span class="w"> </span>install_lib
+python3<span class="w"> </span>setup.py<span class="w"> </span>install_egg_info
+python3<span class="w"> </span>setup.py<span class="w"> </span>install_data
 </pre></div>
 </div>
 <p>You can use Docker to create image/container, or You can use pip to install</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#python3</span>
-pip3 install gen_arm32asm
+pip3<span class="w"> </span>install<span class="w"> </span>gen_arm32asm
 </pre></div>
 </div>
 </section>
@@ -99,30 +99,30 @@ pip3 install gen_arm32asm
 <p><strong>gen_arm32asm</strong> is based on OOP</p>
 <p>Code structure</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_arm32asm/
-    ├── conf/
-    │   ├── gen_arm32asm.cfg
-    │   ├── gen_arm32asm.logo
-    │   ├── gen_arm32asm_util.cfg
-    │   ├── project.yaml
-    │   └── template/
-    │       ├── asmflags.template
-    │       ├── ldflags.template
-    │       ├── main.template
-    │       ├── makefile.template
-    │       ├── objects.template
-    │       └── sources.template
-    ├── __init__.py
-    ├── log/
-    │   └── gen_arm32asm.log
-    ├── pro/
-    │   ├── __init__.py
-    │   ├── read_template.py
-    │   └── write_template.py
-    ├── py.typed
-    └── run/
-        └── gen_arm32asm_run.py
+<span class="w">    </span>├──<span class="w"> </span>conf/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>gen_arm32asm.cfg
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>gen_arm32asm.logo
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>gen_arm32asm_util.cfg
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>project.yaml
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>template/
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>asmflags.template
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>ldflags.template
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>main.template
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>makefile.template
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>objects.template
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>sources.template
+<span class="w">    </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>├──<span class="w"> </span>log/
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>gen_arm32asm.log
+<span class="w">    </span>├──<span class="w"> </span>pro/
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>read_template.py
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>write_template.py
+<span class="w">    </span>├──<span class="w"> </span>py.typed
+<span class="w">    </span>└──<span class="w"> </span>run/
+<span class="w">        </span>└──<span class="w"> </span>gen_arm32asm_run.py
 
-<span class="m">6</span> directories, <span class="m">17</span> files
+<span class="m">6</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">17</span><span class="w"> </span>files
 </pre></div>
 </div>
 </section>
