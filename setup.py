@@ -5,7 +5,7 @@
 Module
     setup.py
 Copyright
-    Copyright (C) 2025 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2025 - 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_arm32asm is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -26,10 +26,10 @@ from os.path import abspath, dirname, join
 from setuptools import setup, find_packages
 
 __author__: str = 'Vladimir Roncevic'
-__copyright__: str = '(C) 2025, https://vroncevic.github.io/gen_arm32asm'
+__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.2'
+__version__: str = '1.0.3'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Updated'
@@ -43,25 +43,14 @@ long_description: Optional[str] = None
 with open(join(THIS_DIR, 'README.md'), encoding='utf-8') as readme:
     long_description = readme.read()
 PROGRAMMING_LANG: str = 'Programming Language :: Python ::'
-VERSIONS: List[str] = ['3.10', '3.11']
+VERSIONS: List[str] = ['3.10', '3.11', '3.12']
 SUPPORTED_PY_VERSIONS: List[str] = [
     f'{PROGRAMMING_LANG} {VERSION}' for VERSION in VERSIONS
 ]
-LICENSE_PREFIX: str = 'License :: OSI Approved ::'
-LICENSES: List[str] = [
-    'GNU Lesser General Public License v2 (LGPLv2)',
-    'GNU Lesser General Public License v2 or later (LGPLv2+)',
-    'GNU Lesser General Public License v3 (LGPLv3)',
-    'GNU Lesser General Public License v3 or later (LGPLv3+)',
-    'GNU Library or Lesser General Public License (LGPL)'
-]
-APPROVED_LICENSES: List[str] = [
-    f'{LICENSE_PREFIX} {LICENSE}' for LICENSE in LICENSES
-]
-PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
+PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS
 setup(
     name='gen_arm32asm',
-    version='1.0.2',
+    version='1.0.3',
     description='Generating ARM 32-bit asm project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',

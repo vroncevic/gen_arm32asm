@@ -23,6 +23,7 @@ other information that should be provided before the modules are installed.
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
+- [Code coverage](#code-coverage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
@@ -137,11 +138,11 @@ Generator structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_arm32asm/__init__.py` | 71 | 12 | 83% |
-| `gen_arm32asm/pro/__init__.py` | 59 | 2 | 97% |
-| `gen_arm32asm/pro/read_template.py` | 53 | 2 | 96% |
-| `gen_arm32asm/pro/write_template.py` | 60 | 3 | 95% |
-| **Total** | 243 | 19 | 92% |
+| `gen_arm32asm/__init__.py` | 69 | 10 | 86%|
+| `gen_arm32asm/pro/__init__.py` | 57 | 0 | 100%|
+| `gen_arm32asm/pro/read_template.py` | 51 | 0 | 100%|
+| `gen_arm32asm/pro/write_template.py` | 58 | 1 | 98%|
+| **Total** | 235 | 11 | 95% |
 
 ### Docs
 
@@ -160,7 +161,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2025 by [vroncevic.github.io/gen_arm32asm](https://vroncevic.github.io/gen_arm32asm/)
+Copyright (C) 2025 - 2026 by [vroncevic.github.io/gen_arm32asm](https://vroncevic.github.io/gen_arm32asm/)
 
 **gen_arm32asm** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,

@@ -1,19 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Create ARM 32-bit asm project skeleton &#8212; gen_arm32asm https://github.com/vroncevic/gen_arm32asm/releases documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <script src="_static/documentation_options.js?v=653397b1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -42,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="create-arm-32-bit-asm-project-skeleton">
-<h1>Create ARM 32-bit asm project skeleton<a class="headerlink" href="#create-arm-32-bit-asm-project-skeleton" title="Permalink to this headline">¶</a></h1>
+<h1>Create ARM 32-bit asm project skeleton<a class="headerlink" href="#create-arm-32-bit-asm-project-skeleton" title="Link to this heading">¶</a></h1>
 <p><strong>gen_arm32asm</strong> is tool for creating ARM 32-bit asm project skeleton.</p>
 <p>Developed in <a class="reference external" href="https://www.python.org/">python</a> code.</p>
 <p>The README is used to introduce the modules and provide instructions on
@@ -59,7 +57,10 @@ other information that should be provided before the modules are installed.</p>
 <li class="toctree-l4"><a class="reference internal" href="gen_arm32asm.pro.html">gen_arm32asm.pro package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="gen_arm32asm.html#module-gen_arm32asm">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gen_arm32asm.html#module-gen_arm32asm">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gen_arm32asm.html#gen_arm32asm.GenARM32ASM"><code class="docutils literal notranslate"><span class="pre">GenARM32ASM</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -68,7 +69,7 @@ other information that should be provided before the modules are installed.</p>
 </div>
 </section>
 <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python3_build.yml"><img alt="gen_arm32asm python3 build" src="https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python3_build.yml/badge.svg" /></a></p>
 <p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_arm32asm/releases">page</a> download and extract release archive.</p>
 <p>To install this set of modules type the following</p>
@@ -88,14 +89,14 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_arm32asm
 </div>
 </section>
 <section id="dependencies">
-<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h1>
 <p><strong>gen_arm32asm</strong> requires next modules and libraries</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/ats-utilities/">ats-utilities - Python App/Tool/Script Utilities</a></p></li>
 </ul>
 </section>
 <section id="tool-structure">
-<h1>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this headline">¶</a></h1>
+<h1>Tool structure<a class="headerlink" href="#tool-structure" title="Link to this heading">¶</a></h1>
 <p><strong>gen_arm32asm</strong> is based on OOP</p>
 <p>Code structure</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_arm32asm/
@@ -127,9 +128,9 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_arm32asm
 </div>
 </section>
 <section id="copyright-and-licence">
-<h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline">¶</a></h1>
+<h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="license: gpl v3" src="https://img.shields.io/badge/license-gplv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/apache-2.0"><img alt="license: apache 2.0" src="https://img.shields.io/badge/license-apache%202.0-blue.svg" /></a></p>
-<p>Copyright (C) 2025 by <a class="reference external" href="https://vroncevic.github.io/gen_arm32asm">vroncevic.github.io/gen_arm32asm</a></p>
+<p>Copyright (C) 2025 - 2026 by <a class="reference external" href="https://vroncevic.github.io/gen_arm32asm">vroncevic.github.io/gen_arm32asm</a></p>
 <p><strong>gen_arm32asm</strong> is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.</p>
@@ -138,7 +139,7 @@ at your option, any later version of Python 3 you may have available.</p>
 <p><a class="reference external" href="https://www.python.org/psf/donations/"><img alt="donate" src="https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif" /></a></p>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -153,8 +154,9 @@ at your option, any later version of Python 3 you may have available.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Create ARM 32-bit asm project skeleton</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
@@ -163,9 +165,12 @@ at your option, any later version of Python 3 you may have available.</p>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-  <h4>Next topic</h4>
-  <p class="topless"><a href="modules.html"
-                        title="next chapter">gen_arm32asm</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="next chapter">gen_arm32asm</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -182,7 +187,7 @@ at your option, any later version of Python 3 you may have available.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -204,8 +209,8 @@ at your option, any later version of Python 3 you may have available.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2025, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    &#169; Copyright 2026, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
