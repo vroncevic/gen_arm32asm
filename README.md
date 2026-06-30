@@ -24,6 +24,7 @@ other information that should be provided before the modules are installed.
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
 - [Code coverage](#code-coverage)
+- [Usage](#usage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
@@ -108,41 +109,90 @@ You can use Dockerfile to create image/container.
 
 Generator structure
 
+<details>
+<summary><b>Click to expand framework structure</b></summary>
+
 ```bash
     gen_arm32asm/
-        ├── conf/
-        │   ├── gen_arm32asm.cfg
-        │   ├── gen_arm32asm.logo
-        │   ├── gen_arm32asm_util.cfg
-        │   ├── project.yaml
-        │   └── template/
-        │       ├── asmflags.template
-        │       ├── ldflags.template
-        │       ├── main.template
-        │       ├── makefile.template
-        │       ├── objects.template
-        │       └── sources.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_arm32asm.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        ├── py.typed
-        └── run/
-            └── gen_arm32asm_run.py
+         ├── application/
+         │   ├── __init__.py
+         │   └── service.py
+         ├── domain/
+         │   ├── __init__.py
+         │   ├── models.py
+         │   └── ports/
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── gen_arm32asm_bundle.py
+         ├── infrastructure/
+         │   ├── cli.py
+         │   ├── cli_bundle.py
+         │   ├── config/
+         │   │   ├── gen_arm32asm.cfg
+         │   │   ├── gen_arm32asm.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── gen_pro_command.py
+         │   ├── icli.py
+         │   ├── icli_command.py
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         └── __init__.py
+
+     6 directories, 21 files
 ```
+</details>
 
 ### Code coverage
 
+<details>
+<summary><b>Click to expand code coverage</b></summary>
+
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_arm32asm/__init__.py` | 69 | 10 | 86%|
-| `gen_arm32asm/pro/__init__.py` | 57 | 0 | 100%|
-| `gen_arm32asm/pro/read_template.py` | 51 | 0 | 100%|
-| `gen_arm32asm/pro/write_template.py` | 58 | 1 | 98%|
-| **Total** | 235 | 11 | 95% |
+| `gen_arm32asm/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/application/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/application/service.py` | 27 | 0 | 100%|
+| `gen_arm32asm/domain/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/domain/models.py` | 18 | 0 | 100%|
+| `gen_arm32asm/domain/ports/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/domain/ports/iservice.py` | 11 | 0 | 100%|
+| `gen_arm32asm/domain/ports/isubprocessor.py` | 11 | 0 | 100%|
+| `gen_arm32asm/engine.py` | 61 | 0 | 100%|
+| `gen_arm32asm/gen_arm32asm_bundle.py` | 39 | 0 | 100%|
+| `gen_arm32asm/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli.py` | 36 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli_bundle.py` | 33 | 0 | 100%|
+| `gen_arm32asm/infrastructure/gen_pro_command.py` | 32 | 0 | 100%|
+| `gen_arm32asm/infrastructure/icli.py` | 11 | 0 | 100%|
+| `gen_arm32asm/infrastructure/icli_command.py` | 14 | 0 | 100%|
+| `gen_arm32asm/infrastructure/subprocessor.py` | 53 | 0 | 100%|
+| **Total** | 386 | 0 | 100% |
+
+</details>
+
+### Usage
+
+Install package
+
+```bash
+pip3 install gen_arm32asm
+```
+
+Prepare main entry point by downloading [main.py](https://raw.githubusercontent.com/vroncevic/gen_arm32asm/main/main.py) or create your own.
+
+
+```bash
+wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_arm32asm/main/main.py
+```
+
+Running tool for creating new ARM Pico M project
+
+```bash
+python3 main.py create --name mytool --output ./demo/
+```
 
 ### Docs
 

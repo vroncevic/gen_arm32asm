@@ -81,30 +81,55 @@ Code structure
 .. code-block:: bash
 
     gen_arm32asm/
-        ├── conf/
-        │   ├── gen_arm32asm.cfg
-        │   ├── gen_arm32asm.logo
-        │   ├── gen_arm32asm_util.cfg
-        │   ├── project.yaml
-        │   └── template/
-        │       ├── asmflags.template
-        │       ├── ldflags.template
-        │       ├── main.template
-        │       ├── makefile.template
-        │       ├── objects.template
-        │       └── sources.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_arm32asm.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        ├── py.typed
-        └── run/
-            └── gen_arm32asm_run.py
-    
-    6 directories, 17 files
+         ├── application/
+         │   ├── __init__.py
+         │   └── service.py
+         ├── domain/
+         │   ├── __init__.py
+         │   ├── models.py
+         │   └── ports/
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── gen_arm32asm_bundle.py
+         ├── infrastructure/
+         │   ├── cli.py
+         │   ├── cli_bundle.py
+         │   ├── config/
+         │   │   ├── gen_arm32asm.cfg
+         │   │   ├── gen_arm32asm.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── gen_pro_command.py
+         │   ├── icli.py
+         │   ├── icli_command.py
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         └── __init__.py
+
+     6 directories, 21 files
+
+Usage
+-----
+
+Install package
+
+.. code-block:: bash
+
+    pip3 install gen_arm32asm
+
+Prepare main entry point by downloading `main.py <https://raw.githubusercontent.com/vroncevic/gen_arm32asm/main/main.py>`_ or create your own.
+
+.. code-block:: bash
+
+    wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_arm32asm/main/main.py
+
+Running tool for creating new ARM Pico M project
+
+.. code-block:: bash
+
+    python3 main.py create --name mytool --output ./demo/
 
 Copyright and licence
 ----------------------

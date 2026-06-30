@@ -5,3 +5,4 @@ gen_arm32asm
    :maxdepth: 4
 
    gen_arm32asm
+   main
