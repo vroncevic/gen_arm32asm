@@ -83,7 +83,6 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <dd class="field-even"><div class="line-block">
 <div class="line">execute - Generates and writes user files.</div>
 <div class="line">is_initialized - Checks if the service component is initialized.</div>
-<div class="line">__str__ - Returns the service as string representation.</div>
 </div>
 </dd>
 </dl>
@@ -96,10 +95,10 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <dl class="py method">
 <dt class="sig sig-object py" id="gen_arm32asm.application.service.Service.execute">
 <span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gen_arm32asm/application/service.html#Service.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_arm32asm.application.service.Service.execute" title="Link to this definition">¶</a></dt>
-<dd><p>Generates picom configuration files.</p>
+<dd><p>Generates assembly code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>&lt;dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>&gt;</em>) – Parameters for template formatting.</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>&lt;dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>&gt;</em>) – Parameters for assembly code generation.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Return code, stdout and stderr messages.</p>

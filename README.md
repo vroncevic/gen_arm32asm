@@ -139,9 +139,10 @@ Generator structure
          │   ├── icli_command.py
          │   ├── __init__.py
          │   └── subprocessor.py
-         └── __init__.py
+         ├── __init__.py
+         └── py.typed
 
-     6 directories, 21 files
+     6 directories, 22 files
 ```
 </details>
 
@@ -154,13 +155,13 @@ Generator structure
 |------|-------|------|-------|
 | `gen_arm32asm/__init__.py` | 8 | 0 | 100%|
 | `gen_arm32asm/application/__init__.py` | 8 | 0 | 100%|
-| `gen_arm32asm/application/service.py` | 27 | 0 | 100%|
+| `gen_arm32asm/application/service.py` | 22 | 0 | 100%|
 | `gen_arm32asm/domain/__init__.py` | 8 | 0 | 100%|
 | `gen_arm32asm/domain/models.py` | 18 | 0 | 100%|
 | `gen_arm32asm/domain/ports/__init__.py` | 8 | 0 | 100%|
 | `gen_arm32asm/domain/ports/iservice.py` | 11 | 0 | 100%|
 | `gen_arm32asm/domain/ports/isubprocessor.py` | 11 | 0 | 100%|
-| `gen_arm32asm/engine.py` | 61 | 0 | 100%|
+| `gen_arm32asm/engine.py` | 66 | 0 | 100%|
 | `gen_arm32asm/gen_arm32asm_bundle.py` | 39 | 0 | 100%|
 | `gen_arm32asm/infrastructure/__init__.py` | 8 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli.py` | 36 | 0 | 100%|

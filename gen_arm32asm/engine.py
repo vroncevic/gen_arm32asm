@@ -41,7 +41,7 @@ __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.4'
+__version__: str = '1.0.5'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Development'
@@ -116,7 +116,7 @@ class GenARM32ASM(Base):
             ])
             self._reporter.success(["✅ gen_arm32asm: engine initialized successfully."])
 
-        except ATSValueError as exc:
+        except (ATSValueError, ValueError) as exc:
             self._reporter.error([f'❌ gen_arm32asm: {exc}'])
         except Exception as exc:
             self._reporter.error([f'❌ gen_arm32asm unexpected exception: {exc}'])
@@ -130,16 +130,22 @@ class GenARM32ASM(Base):
         '''
         result: dict[str, Any] = {}
 
-        if self.is_initialized():
-            self._reporter.success(["🔥 Starting execution command..."])
-            result = self._cli.run()
-            self._reporter.success(["✅ Execution finished!"])
+        try:
+            if self.is_initialized():
+                self._reporter.success(["🔥 Starting execution command..."])
+                result = self._cli.run()
+                self._reporter.success(["✅ Execution finished!"])
 
-            if result.get("returncode") != 0:
-                self._reporter.error([f'❌ gen_arm32asm: {result.get("stderr")}'])
-                self._reporter.error([f'❌ gen_arm32asm: exiting with error.'])
+                if result.get("returncode") != 0:
+                    self._reporter.error([f'❌ gen_arm32asm: {result.get("stderr")}'])
+                    self._reporter.error([f'❌ gen_arm32asm: exiting with error.'])
+                else:
+                    self._reporter.success([f'✅ gen_arm32asm: {result.get("stdout") or 'done!'}'])
+                    self._reporter.success([f'✅ gen_arm32asm: exiting successfully.'])
             else:
-                self._reporter.success([f'✅ gen_arm32asm: {result.get("stdout") or 'done!'}'])
-                self._reporter.success([f'✅ gen_arm32asm: exiting successfully.'])
-        else:
-            self._reporter.error([f'❌ gen_arm32asm: engine not initialized.'])
+                self._reporter.error([f'❌ gen_arm32asm: engine not initialized.'])
+                
+        except (ATSValueError, ValueError) as exc:
+            self._reporter.error([f'❌ gen_arm32asm: {exc}'])
+        except Exception as exc:
+            self._reporter.error([f'❌ gen_arm32asm unexpected exception: {exc}'])
