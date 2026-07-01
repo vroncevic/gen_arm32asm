@@ -22,7 +22,6 @@ Info
 import unittest
 from unittest.mock import MagicMock, patch
 from ats_utilities.exceptions.ats_value_error import ATSValueError
-from ats_utilities.generator.igenerator import IGenerator
 from ats_utilities.option.ioption_parser import IOptionManager
 from gen_arm32asm.engine import GenARM32ASM
 from gen_arm32asm.gen_arm32asm_bundle import GenARM32ASMBundle
@@ -34,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Development'
@@ -79,6 +78,36 @@ class TestEngine(unittest.TestCase):
         bundle: GenARM32ASMBundle = GenARM32ASMBundle(cli=mock_cli)
         engine: GenARM32ASM = GenARM32ASM(bundle)
         self.assertFalse(engine.is_initialized())
+
+    def test_process_unexpected_exception(self) -> None:
+        '''
+            Tests engine process catches unexpected exception.
+        '''
+        mock_cli: MagicMock = MagicMock(spec=ICLI)
+        mock_cli.is_initialized.return_value = True
+        mock_cli.run.side_effect = Exception("Unexpected error")
+
+        bundle: GenARM32ASMBundle = GenARM32ASMBundle(cli=mock_cli)
+        engine: GenARM32ASM = GenARM32ASM(bundle)
+        self.assertTrue(engine.is_initialized())
+
+        engine.process()
+        mock_cli.run.assert_called_once()
+
+    def test_process_expected_exception(self) -> None:
+        '''
+            Tests engine process catches expected exception.
+        '''
+        mock_cli: MagicMock = MagicMock(spec=ICLI)
+        mock_cli.is_initialized.return_value = True
+        mock_cli.run.side_effect = ATSValueError("Expected error")
+
+        bundle: GenARM32ASMBundle = GenARM32ASMBundle(cli=mock_cli)
+        engine: GenARM32ASM = GenARM32ASM(bundle)
+        self.assertTrue(engine.is_initialized())
+
+        engine.process()
+        mock_cli.run.assert_called_once()
 
     def test_bundle_validation_failures(self) -> None:
         '''

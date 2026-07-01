@@ -21,7 +21,6 @@ Info
 
 import unittest
 from unittest.mock import MagicMock
-from ats_utilities.exceptions.ats_value_error import ATSValueError
 from gen_arm32asm.domain.ports.isubprocessor import ISubProcessor
 from gen_arm32asm.application.service import Service
 
@@ -29,7 +28,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Development'
@@ -62,7 +61,7 @@ class TestService(unittest.TestCase):
         '''
             Tests initialization fails when subprocessor is None.
         '''
-        with self.assertRaises(ATSValueError) as ctx:
+        with self.assertRaises(ValueError) as ctx:
             Service(None)
         self.assertEqual(str(ctx.exception), 'subprocessor must be provided.')
 

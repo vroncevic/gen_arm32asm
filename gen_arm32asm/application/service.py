@@ -20,8 +20,6 @@ Info
 '''
 
 from typing import Any, override
-from ats_utilities.factory_class import format_instance_to_string
-from ats_utilities.exceptions.ats_value_error import ATSValueError
 from gen_arm32asm.domain.ports.iservice import IService
 from gen_arm32asm.domain.ports.isubprocessor import ISubProcessor
 
@@ -29,7 +27,7 @@ __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.4'
+__version__: str = '1.0.5'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Development'
@@ -46,7 +44,6 @@ class Service(IService):
             :methods:
                 | execute - Generates and writes user files.
                 | is_initialized - Checks if the service component is initialized.
-                | __str__ - Returns the service as string representation.
     '''
 
     def __init__(self, subprocessor: ISubProcessor) -> None:
@@ -56,19 +53,19 @@ class Service(IService):
             :param subprocessor: Subprocessor adapter.
             :type subprocessor: <ISubProcessor>
             :exceptions:
-                | ATSValueError: Subprocessor must be provided.
+                | ValueError: Subprocessor must be provided.
         '''
         if subprocessor is None:
-            raise ATSValueError('subprocessor must be provided.')
+            raise ValueError('subprocessor must be provided.')
 
         self._subprocessor: ISubProcessor = subprocessor
 
     @override
     def execute(self, params: dict[str, Any]) -> dict[str, Any]:
         '''
-            Generates picom configuration files.
+            Generates assembly code.
 
-            :param params: Parameters for template formatting.
+            :param params: Parameters for assembly code generation.
             :type params: <dict[str, Any]>
             :return: Return code, stdout and stderr messages.
             :return type: <dict[str, Any]>
@@ -86,14 +83,3 @@ class Service(IService):
             :exceptions: None.
         '''
         return self._subprocessor.is_initialized()
-
-    @override
-    def __str__(self) -> str:
-        '''
-            Returns the service as string representation.
-
-            :return: The service as string representation.
-            :rtype: <str>
-            :exceptions: None.
-        '''
-        return format_instance_to_string(self)
