@@ -2,7 +2,7 @@
 
 '''
 Module
-    main.py
+    options.py
 Copyright
     Copyright (C) 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_arm32asm is free software: you can redistribute it and/or modify it
@@ -16,15 +16,12 @@ Copyright
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
-    Main entry point for Task Code Generator CLI.
+    GenARM32ASM bundle options for the gen_arm32asm bundle.
 '''
 
 from __future__ import annotations
 
-from sys import exit
-
-from gen_arm32asm.engine import GenARM32ASM
-from gen_arm32asm.setup.factory import GenARM32ASMBundleFactory
+from typing import TypedDict
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
@@ -36,23 +33,14 @@ __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-def main() -> bool:
+class GenARM32ASMBundleOptions(TypedDict):
     '''
-        Bootstraps and runs the gen_arm32asm with required adapters.
+        GenARM32ASM bundle options for the gen_arm32asm bundle.
 
-        :return: True if successful, False otherwise.
-        :exceptions: None
+        It defines:
+
+            :attributes:
+                | info_file - The info file path for the gen_arm32asm bundle.
     '''
-    gen_arm32asm: GenARM32ASM = GenARM32ASM(GenARM32ASMBundleFactory.create_bundle())
 
-    return gen_arm32asm.process()
-
-
-if __name__ == '__main__':
-    '''
-        Entry point for gen_arm32asm execution.
-
-        :exit code: 0 if successful, 1 otherwise.
-        :exceptions: None
-    '''
-    exit(0 if main() else 1)
+    info_file: str

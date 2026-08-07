@@ -16,35 +16,31 @@ Copyright
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
-    Main engine orchestrator class for Task Code Generator CLI.
+    Engine orchestrating the initialization and execution of gen_arm32asm.
 '''
 
-from typing import Any, override
-from os.path import dirname, realpath
-from ats_utilities.base.engine import Base
-from ats_utilities.base.component_bundle import BaseComponentBundle
-from ats_utilities.generator.igenerator import IGenerator
-from ats_utilities.option.ioption_parser import IOptionManager
-from ats_utilities.exceptions.ats_value_error import ATSValueError
-from gen_arm32asm.gen_arm32asm_bundle import GenARM32ASMBundle
-from gen_arm32asm.domain.ports.iservice import IService
-from gen_arm32asm.application.service import Service
-from gen_arm32asm.domain.ports.isubprocessor import ISubProcessor
-from gen_arm32asm.infrastructure.subprocessor import SubProcessor
-from gen_arm32asm.infrastructure.icli_command import ICLICommand
-from gen_arm32asm.infrastructure.cli_bundle import CLIBundle
-from gen_arm32asm.infrastructure.gen_pro_command import GenProCommand
-from gen_arm32asm.infrastructure.icli import ICLI
-from gen_arm32asm.infrastructure.cli import CLI
+from __future__ import annotations
 
-__author__: str = 'Vladimir Roncevic'
-__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
-__license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.5'
-__maintainer__: str = 'Vladimir Roncevic'
-__email__: str = 'elektron.ronca@gmail.com'
-__status__: str = 'Development'
+from collections.abc import Mapping
+from logging import INFO, ERROR
+from sys import stdout
+
+from ats_utilities.base.engine import Base
+from ats_utilities.logger.ilogger import ILogger
+from ats_utilities.exceptions import ATSValueError, ATSTypeError
+
+from gen_arm32asm.setup.bundle import GenARM32ASMBundle
+from gen_arm32asm.setup.validator import GenARM32ASMBundleValidator
+from gen_arm32asm.infrastructure.cli.icli import ICLI
+
+__author__ = 'Vladimir Roncevic'
+__copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
+__credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
+__license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
+__version__ = '1.0.5'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 
 class GenARM32ASM(Base):
@@ -54,98 +50,89 @@ class GenARM32ASM(Base):
         It defines:
 
             :attributes:
-                | _info_file - Path to the info file.
-                | _cli - Adapter for command line user interface.
+                | _is_initialized - The flag indicating whether the gen_arm32asm engine is initialized.
+                | _logger - The logger for logging messages during initialization and execution.
+                | _cli - The adapter for the command line interface.
             :methods:
-                | __init__ - Initializes the GenARM32ASM engine with adapters and services.
-                | run - Starts the gen_arm32asm.
+                | __init__ - Initializes the gen_arm32asm engine with adapters and services.
+                | process - Processes the gen_arm32asm commands.
     '''
 
-    _info_file: str = 'infrastructure/config/gen_arm32asm.cfg'
+    _is_initialized: bool
+    _logger: ILogger
+    _cli: ICLI
 
-    def __init__(self, component_bundle: GenARM32ASMBundle | None = None) -> None:
+    def __init__(self, bundle: GenARM32ASMBundle) -> None:
         '''
-            Initializes the GenARM32ASM engine with adapters and services.
+            Initializes the gen_arm32asm engine with adapters and services.
 
-            :param component_bundle: GenARM32ASM bundle containing adapters and services | None.
-            :type component_bundle: <GenARM32ASMBundle | None>
+            :param bundle: gen_arm32asm bundle containing adapters and services.
             :exceptions: None.
         '''
-        current_dir: str = dirname(realpath(__file__))
-        super().__init__(BaseComponentBundle(info_file=f'{current_dir}/{self._info_file}', use_generator=True))
+        self._is_initialized = False
 
         try:
-            if not self._is_initialized:
-                raise ATSValueError(f'failed to initialize engine with {current_dir}/{self._info_file}')
+            GenARM32ASMBundleValidator.validate(bundle)
+
+            # Initialize base engine
+            super().__init__(bundle.base)
 
             # Mark as not initialized (waiting for other components to be initialized)
             self._is_initialized = False
 
-            # Use provided component bundle or use default adapters
-            bundle: GenARM32ASMBundle = component_bundle or GenARM32ASMBundle()
-
-            # Initialization of primary adapter (Generator)
-            # Generator for generating project structure
-            # Force default implementation of generator if not provided by bundle
-            generator: IGenerator = bundle.generator or self._generator
-
-            # Initialization of option manager adapter (Adapter for options parsing)
-            parser: IOptionManager = bundle.parser or self._options_parser
-
-            # Initialization of secondary adapter (Service)
-            # Sub processor for execution of other tools/commands
-            # Force default implementation of sub processor if not provided by bundle
-            subprocessor: ISubProcessor = bundle.subprocessor or SubProcessor(generator=generator)
-
-            # Injecting adapter into the application service (Orchestration)
-            # Force default implementation of service if not provided by bundle
-            service: IService = bundle.service or Service(subprocessor=subprocessor)
-
-            # Setting up CLI command strategies (Command strategies for CLI)
-            commands: list[ICLICommand] = [GenProCommand()]
-
-            # Setting up primary adapter (CLI interface)
-            cli_bundle: CLIBundle = CLIBundle(service=service, parser=parser, commands=commands)
-            self._cli: ICLI = bundle.cli or CLI(cli_bundle)
+            # Setting up primary inbound adapter (CLI interface)
+            self._cli = bundle.cli
 
             # Mark as initialized (all components initialized)
             self._is_initialized = all([
                 component.is_initialized() for component in [
-                    generator, parser, subprocessor, service, self._cli
+                    bundle.base.option_manager,
+                    bundle.service,
+                    bundle.subprocessor,
+                    self._cli
                 ] if component
             ])
-            self._reporter.success(["✅ gen_arm32asm: engine initialized successfully."])
 
-        except (ATSValueError, ValueError) as exc:
-            self._reporter.error([f'❌ gen_arm32asm: {exc}'])
+            # Setting up logger for tool engine
+            self._logger = self.get_context().logger
+            self._logger.write_log(INFO, '✅ gen_arm32asm: engine initialized successfully!')
+
+        except (ATSValueError, ATSTypeError) as exc:
+            stdout.write(f'❌ gen_arm32asm: {exc}!\n')
+
         except Exception as exc:
-            self._reporter.error([f'❌ gen_arm32asm unexpected exception: {exc}'])
+            stdout.write(f'❌ gen_arm32asm unexpected exception: {exc}!\n')
 
-    @override
-    def process(self) -> None:
+    def process(self) -> bool:
         '''
-            Starts the CLI adapter to run the tool command.
+            Processes the gen_arm32asm commands.
 
+            :return: True if successful, False otherwise.
             :exceptions: None.
         '''
-        result: dict[str, Any] = {}
+        result: Mapping[str, object] = {}
 
         try:
             if self.is_initialized():
-                self._reporter.success(["🔥 Starting execution command..."])
+                self._logger.write_log(INFO, '🔥 Starting execution command...')
                 result = self._cli.run()
-                self._reporter.success(["✅ Execution finished!"])
+                self._logger.write_log(INFO, '✅ Execution finished!')
 
                 if result.get("returncode") != 0:
-                    self._reporter.error([f'❌ gen_arm32asm: {result.get("stderr")}'])
-                    self._reporter.error([f'❌ gen_arm32asm: exiting with error.'])
+                    self._logger.write_log(ERROR, f'❌ gen_arm32asm: {result.get("stderr") or "failed!"}')
+                    return False
                 else:
-                    self._reporter.success([f'✅ gen_arm32asm: {result.get("stdout") or 'done!'}'])
-                    self._reporter.success([f'✅ gen_arm32asm: exiting successfully.'])
+                    self._logger.write_log(INFO, '✅ gen_arm32asm: done!')
+                    self._logger.write_log(INFO, '✅ gen_arm32asm: exiting successfully!')
+                    return True
             else:
-                self._reporter.error([f'❌ gen_arm32asm: engine not initialized.'])
-                
-        except (ATSValueError, ValueError) as exc:
-            self._reporter.error([f'❌ gen_arm32asm: {exc}'])
+                self._logger.write_log(ERROR, '❌ gen_arm32asm: engine not initialized!')
+                return False
+
+        except (ATSValueError, ATSTypeError) as exc:
+            self._logger.write_log(ERROR, f'❌ gen_arm32asm: {exc}!')
+            return False
+
         except Exception as exc:
-            self._reporter.error([f'❌ gen_arm32asm unexpected exception: {exc}'])
+            self._logger.write_log(ERROR, f'❌ gen_arm32asm unexpected exception: {exc}!')
+            return False
