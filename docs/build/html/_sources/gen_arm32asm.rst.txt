@@ -7,9 +7,9 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   gen_arm32asm.application
-   gen_arm32asm.domain
+   gen_arm32asm.core
    gen_arm32asm.infrastructure
+   gen_arm32asm.setup
 
 Submodules
 ----------
@@ -18,7 +18,6 @@ Submodules
    :maxdepth: 4
 
    gen_arm32asm.engine
-   gen_arm32asm.gen_arm32asm_bundle
 
 Module contents
 ---------------

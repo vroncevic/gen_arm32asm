@@ -16,30 +16,43 @@ Copyright
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
-    Main entry point for gen_arm32asm CLI.
+    Main entry point for Task Code Generator CLI.
 '''
 
+from __future__ import annotations
+
+from sys import exit
+
 from gen_arm32asm.engine import GenARM32ASM
+from gen_arm32asm.setup.factory import GenARM32ASMBundleFactory
 
-__author__: str = 'Vladimir Roncevic'
-__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
-__license__: str = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__: str = '1.0.5'
-__maintainer__: str = 'Vladimir Roncevic'
-__email__: str = 'elektron.ronca@gmail.com'
-__status__: str = 'Development'
+__author__ = 'Vladimir Roncevic'
+__copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
+__credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
+__license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
+__version__ = '1.0.6'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 
-def main() -> None:
+def main() -> bool:
     '''
-        Bootstraps and runs the GenARM32ASM application with required adapters.
+        Bootstraps and runs the gen_arm32asm with required adapters.
 
+        :return: True if successful, False otherwise.
         :exceptions: None
     '''
-    gen_arm32asm = GenARM32ASM()
-    gen_arm32asm.process()
+    gen_arm32asm: GenARM32ASM = GenARM32ASM(GenARM32ASMBundleFactory.create_bundle())
+
+    return gen_arm32asm.process()
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    '''
+        Entry point for gen_arm32asm execution.
+
+        :exit code: 0 if successful, 1 otherwise.
+        :exceptions: None
+    '''
+    exit(0 if main() else 1)
