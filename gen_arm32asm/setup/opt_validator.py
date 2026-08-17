@@ -24,6 +24,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 
 from ats_utilities.validation.check_type import istype
+from ats_utilities.exceptions import ATSValueError, ATSTypeError
 from ats_utilities.validation.check_value import not_none
 
 from gen_arm32asm.setup.options import GenARM32ASMBundleOptions
@@ -33,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__ = '1.0.6'
+__version__ = '1.0.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -47,6 +48,7 @@ class GenARM32ASMBundleOptionsValidator:
 
             :methods:
                 | validate - Validates the gen_arm32asm bundle options.
+                | is_valid - Checks if the gen_arm32asm bundle options is valid.
     '''
 
     @classmethod
@@ -73,3 +75,18 @@ class GenARM32ASMBundleOptionsValidator:
             attribute = options.get(attr_name)
 
             istype(attribute, expected_type, ctx, msg_attr_name_istype)
+
+    @classmethod
+    def is_valid(cls, genarm32asmbundleoptions: GenARM32ASMBundleOptions) -> bool:
+        '''
+            Checks if the genarm32asmbundleoptions is valid.
+
+            :param genarm32asmbundleoptions: The genarm32asmbundleoptions to be checked.
+            :return: True if valid, False otherwise.
+        '''
+        try:
+            cls.validate(genarm32asmbundleoptions)
+            return True
+
+        except (ATSValueError, ATSTypeError):
+            return False

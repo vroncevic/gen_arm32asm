@@ -70,3 +70,6 @@ class TestGenARM32ASMBundleRegistry(unittest.TestCase):
     def test_create_bundle_invalid_dependencies(self) -> None:
         with self.assertRaises(Exception):
             GenARM32ASMBundleRegistry.create_bundle(None)
+
+    def test_get_version(self) -> None:
+        self.assertEqual(GenARM32ASMBundleRegistry.get_version(), '1.0.7')

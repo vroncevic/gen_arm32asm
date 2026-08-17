@@ -32,3 +32,12 @@ class TestGenARM32ASMBundleOptionsValidator(unittest.TestCase):
         with self.assertRaises(Exception):
             options = {'info_file': 123}
             GenARM32ASMBundleOptionsValidator.validate(options)
+
+    def test_is_valid_success(self) -> None:
+        options = {'info_file': 'some_path'}
+        self.assertTrue(GenARM32ASMBundleOptionsValidator.is_valid(options))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(GenARM32ASMBundleOptionsValidator.is_valid(None))
+        self.assertFalse(GenARM32ASMBundleOptionsValidator.is_valid("not_a_mapping"))
+        self.assertFalse(GenARM32ASMBundleOptionsValidator.is_valid({'info_file': 123}))

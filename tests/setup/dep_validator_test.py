@@ -80,3 +80,27 @@ class TestGenARM32ASMBundleDependenciesValidator(unittest.TestCase):
         }
         with self.assertRaises(Exception):
             GenARM32ASMBundleDependenciesValidator.validate(dependencies)
+
+    def test_is_valid_success(self) -> None:
+        mock_base = Mock(spec=BaseBundle)
+        dummy_service = DummyService()
+        dummy_subprocessor = DummySubProcessor()
+        dummy_cli = DummyCLI()
+
+        dependencies = {
+            'base': mock_base,
+            'service': dummy_service,
+            'subprocessor': dummy_subprocessor,
+            'cli': dummy_cli
+        }
+        self.assertTrue(GenARM32ASMBundleDependenciesValidator.is_valid(dependencies))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(GenARM32ASMBundleDependenciesValidator.is_valid(None))
+        self.assertFalse(GenARM32ASMBundleDependenciesValidator.is_valid("not_a_mapping"))
+        dependencies = {
+            'base': Mock(spec=BaseBundle),
+            'service': DummyService(),
+            'subprocessor': DummySubProcessor()
+        }
+        self.assertFalse(GenARM32ASMBundleDependenciesValidator.is_valid(dependencies))
