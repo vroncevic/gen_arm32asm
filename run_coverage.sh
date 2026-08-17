@@ -7,5 +7,6 @@
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-python3 ats_coverage.py
+python3 coverage/ats_coverage.py gen_arm32asm
+pylint gen_arm32asm > gen_arm32asm.report
 echo "Done"

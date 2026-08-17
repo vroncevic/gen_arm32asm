@@ -110,6 +110,7 @@ class TestGenARM32ASMBundleValidator(unittest.TestCase):
                 cli=dummy_cli
             )
             GenARM32ASMBundleValidator.validate(bundle)
+
         with self.assertRaises(Exception):
             bundle = GenARM32ASMBundle(
                 base=mock_base,
@@ -127,3 +128,21 @@ class TestGenARM32ASMBundleValidator(unittest.TestCase):
                 cli="invalid"
             )
             GenARM32ASMBundleValidator.validate(bundle)
+
+    def test_is_valid_success(self) -> None:
+        mock_base = Mock(spec=BaseBundle)
+        dummy_service = DummyService()
+        dummy_subprocessor = DummySubProcessor()
+        dummy_cli = DummyCLI()
+
+        bundle = GenARM32ASMBundle(
+            base=mock_base,
+            service=dummy_service,
+            subprocessor=dummy_subprocessor,
+            cli=dummy_cli
+        )
+        self.assertTrue(GenARM32ASMBundleValidator.is_valid(bundle))
+
+    def test_is_valid_failure(self) -> None:
+        self.assertFalse(GenARM32ASMBundleValidator.is_valid(None))
+        self.assertFalse(GenARM32ASMBundleValidator.is_valid("invalid"))

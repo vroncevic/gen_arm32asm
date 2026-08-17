@@ -30,3 +30,6 @@ class TestGenARM32ASMBundleFactory(unittest.TestCase):
         options = {'info_file': 123}
         with self.assertRaises(Exception):
             GenARM32ASMBundleFactory.create_bundle(options)
+
+    def test_get_version(self) -> None:
+        self.assertEqual(GenARM32ASMBundleFactory.get_version(), '1.0.7')

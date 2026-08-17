@@ -117,46 +117,46 @@ Tool structure
 ```bash
     gen_arm32asm/
          ├── core/
-         │   ├── __init__.py
-         │   ├── model/
-         │   │   ├── __init__.py
-         │   │   └── project_setup.py
-         │   └── service/
-         │       ├── engine.py
-         │       ├── __init__.py
-         │       ├── iservice.py
-         │       └── isubprocessor.py
+         │   ├── __init__.py
+         │   ├── model/
+         │   │   ├── __init__.py
+         │   │   └── project_setup.py
+         │   └── service/
+         │       ├── engine.py
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
          ├── engine.py
          ├── infrastructure/
-         │   ├── cli/
-         │   │   ├── engine.py
-         │   │   ├── icli.py
-         │   │   ├── __init__.py
-         │   │   └── setup/
-         │   │       ├── bundle.py
-         │   │       ├── dep_validator.py
-         │   │       ├── dependencies.py
-         │   │       ├── factory.py
-         │   │       ├── __init__.py
-         │   │       ├── keys.py
-         │   │       ├── opt_validator.py
-         │   │       ├── options.py
-         │   │       ├── registry.py
-         │   │       └── validator.py
-         │   ├── command/
-         │   │   ├── command.py
-         │   │   ├── gen_pro_command_definition.py
-         │   │   ├── gen_pro_command_executor.py
-         │   │   ├── icommand_definition.py
-         │   │   ├── icommand_executor.py
-         │   │   └── __init__.py
-         │   ├── config/
-         │   │   ├── gen_arm32asm.cfg
-         │   │   ├── gen_arm32asm.logo
-         │   │   ├── scheme.json
-         │   │   └── templates.tgz
-         │   ├── __init__.py
-         │   └── subprocessor.py
+         │   ├── cli/
+         │   │   ├── engine.py
+         │   │   ├── icli.py
+         │   │   ├── __init__.py
+         │   │   └── setup/
+         │   │       ├── bundle.py
+         │   │       ├── dep_validator.py
+         │   │       ├── dependencies.py
+         │   │       ├── factory.py
+         │   │       ├── __init__.py
+         │   │       ├── keys.py
+         │   │       ├── opt_validator.py
+         │   │       ├── options.py
+         │   │       ├── registry.py
+         │   │       └── validator.py
+         │   ├── command/
+         │   │   ├── command.py
+         │   │   ├── gen_pro_command_definition.py
+         │   │   ├── gen_pro_command_executor.py
+         │   │   ├── icommand_definition.py
+         │   │   ├── icommand_executor.py
+         │   │   └── __init__.py
+         │   ├── config/
+         │   │   ├── gen_arm32asm.cfg
+         │   │   ├── gen_arm32asm.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── __init__.py
+         │   └── subprocessor.py
          ├── __init__.py
          ├── py.typed
          └── setup/
@@ -171,7 +171,7 @@ Tool structure
              ├── registry.py
              └── validator.py
 
-      10 directories, 45 files
+     10 directories, 45 files
 ```
 </details>
 
@@ -203,35 +203,35 @@ Tool structure
 | `gen_arm32asm/infrastructure/__init__.py` | 8 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/engine.py` | 39 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/icli.py` | 16 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/icli.py` | 14 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/setup/bundle.py` | 22 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/setup/dependencies.py` | 18 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/setup/factory.py` | 32 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/setup/factory.py` | 35 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/setup/keys.py` | 26 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/setup/opt_validator.py` | 28 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/setup/opt_validator.py` | 36 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/setup/options.py` | 15 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/setup/registry.py` | 21 | 0 | 100%|
-| `gen_arm32asm/infrastructure/cli/setup/validator.py` | 35 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/setup/registry.py` | 24 | 0 | 100%|
+| `gen_arm32asm/infrastructure/cli/setup/validator.py` | 43 | 0 | 100%|
 | `gen_arm32asm/infrastructure/command/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/infrastructure/command/command.py` | 16 | 0 | 100%|
 | `gen_arm32asm/infrastructure/command/gen_pro_command_definition.py` | 24 | 0 | 100%|
 | `gen_arm32asm/infrastructure/command/gen_pro_command_executor.py` | 21 | 0 | 100%|
-| `gen_arm32asm/infrastructure/command/icommand_definition.py` | 15 | 0 | 100%|
-| `gen_arm32asm/infrastructure/command/icommand_executor.py` | 14 | 0 | 100%|
+| `gen_arm32asm/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
+| `gen_arm32asm/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
 | `gen_arm32asm/infrastructure/subprocessor.py` | 55 | 0 | 100%|
 | `gen_arm32asm/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/setup/bundle.py` | 23 | 0 | 100%|
-| `gen_arm32asm/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_arm32asm/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_arm32asm/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_arm32asm/setup/factory.py` | 45 | 0 | 100%|
+| `gen_arm32asm/setup/factory.py` | 48 | 0 | 100%|
 | `gen_arm32asm/setup/keys.py` | 27 | 0 | 100%|
-| `gen_arm32asm/setup/opt_validator.py` | 26 | 0 | 100%|
+| `gen_arm32asm/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_arm32asm/setup/options.py` | 12 | 0 | 100%|
-| `gen_arm32asm/setup/registry.py` | 29 | 0 | 100%|
-| `gen_arm32asm/setup/validator.py` | 40 | 0 | 100%|
-| **Total** | 879 | 0 | 100% |
+| `gen_arm32asm/setup/registry.py` | 32 | 0 | 100%|
+| `gen_arm32asm/setup/validator.py` | 48 | 0 | 100%|
+| **Total** | 935 | 0 | 100% |
 
 </details>
 
