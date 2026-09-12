@@ -32,4 +32,4 @@ class TestGenARM32ASMBundleFactory(unittest.TestCase):
             GenARM32ASMBundleFactory.create_bundle(options)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenARM32ASMBundleFactory.get_version(), '1.0.7')
+        self.assertEqual(GenARM32ASMBundleFactory.get_version(), '1.0.8')

@@ -28,7 +28,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__ = '1.0.7'
+__version__ = '1.0.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,7 +42,7 @@ class ProjectSetup:
         It defines:
 
             :attributes:
-                | chip_config - Mapping with chip configuration.
+                | pro_config - Mapping with project configuration.
     '''
 
-    chip_config: Mapping[str, object]
+    pro_config: Mapping[str, object]

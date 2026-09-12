@@ -10,7 +10,7 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-[![gen_arm32asm python checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml) [![gen_arm32asm package checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_arm32asm.svg)](https://github.com/vroncevic/gen_arm32asm/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_arm32asm.svg)](https://github.com/vroncevic/gen_arm32asm/graphs/contributors)
+[![gen_arm32asm python checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml) [![gen_arm32asm package checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package.yml) [![gen_arm32asm interface checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_interface_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_interface_checker.yml) [![gen_arm32asm isp checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_isp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_isp_checker.yml) [![gen_arm32asm srp checker](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_srp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_srp_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_arm32asm.svg)](https://github.com/vroncevic/gen_arm32asm/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_arm32asm.svg)](https://github.com/vroncevic/gen_arm32asm/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -191,7 +191,7 @@ Tool structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_arm32asm/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/core/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/core/model/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/core/model/project_setup.py` | 14 | 0 | 100%|
@@ -200,7 +200,7 @@ Tool structure
 | `gen_arm32asm/core/service/iservice.py` | 14 | 0 | 100%|
 | `gen_arm32asm/core/service/isubprocessor.py` | 14 | 0 | 100%|
 | `gen_arm32asm/engine.py` | 57 | 0 | 100%|
-| `gen_arm32asm/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_arm32asm/infrastructure/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/engine.py` | 39 | 0 | 100%|
 | `gen_arm32asm/infrastructure/cli/icli.py` | 14 | 0 | 100%|
@@ -225,13 +225,13 @@ Tool structure
 | `gen_arm32asm/setup/bundle.py` | 23 | 0 | 100%|
 | `gen_arm32asm/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_arm32asm/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_arm32asm/setup/factory.py` | 48 | 0 | 100%|
+| `gen_arm32asm/setup/factory.py` | 49 | 0 | 100%|
 | `gen_arm32asm/setup/keys.py` | 27 | 0 | 100%|
 | `gen_arm32asm/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_arm32asm/setup/options.py` | 12 | 0 | 100%|
 | `gen_arm32asm/setup/registry.py` | 32 | 0 | 100%|
 | `gen_arm32asm/setup/validator.py` | 48 | 0 | 100%|
-| **Total** | 935 | 0 | 100% |
+| **Total** | 938 | 0 | 100% |
 
 </details>
 
