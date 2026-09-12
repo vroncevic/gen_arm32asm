@@ -1,12 +1,12 @@
 name: gen_arm32asm_package_checker
 on:
   push:
-    branches: [ main ]
+    branches: [ master, main ]
     paths:
       - 'gen_arm32asm/**'
       - 'setup.py'
   pull_request:
-    branches: [ main ]
+    branches: [ master, main ]
     paths:
       - 'gen_arm32asm/**'
       - 'setup.py'

@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_arm32asm'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_arm32asm/blob/dev/LICENSE'
-__version__ = '1.0.7'
+__version__ = '1.0.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -122,9 +122,11 @@ class GenARM32ASM(Base):
                 if result.get("returncode") != 0:
                     self._logger.write_log(ERROR, f'❌ gen_arm32asm: {result.get("stderr") or "failed!"}')
                     return False
+
                 self._logger.write_log(INFO, '✅ gen_arm32asm: done!')
                 self._logger.write_log(INFO, '✅ gen_arm32asm: exiting successfully!')
                 return True
+
             self._logger.write_log(ERROR, '❌ gen_arm32asm: engine not initialized!')
             return False
 

@@ -9,13 +9,22 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-|gen_arm32asm python checker| |gen_arm32asm python package| |github issues| |documentation status| |github contributors|
+|gen_arm32asm python checker| |gen_arm32asm python package| |gen_arm32asm interface checker| |gen_arm32asm isp checker| |gen_arm32asm srp checker| |github issues| |documentation status| |github contributors|
 
 .. |gen_arm32asm python checker| image:: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_python_checker.yml
 
 .. |gen_arm32asm python package| image:: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_package.yml
+
+.. |gen_arm32asm interface checker| image:: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_interface_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_interface_checker.yml
+
+.. |gen_arm32asm isp checker| image:: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_isp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_isp_checker.yml
+
+.. |gen_arm32asm srp checker| image:: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_srp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_arm32asm/actions/workflows/gen_arm32asm_srp_checker.yml
 
 .. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_arm32asm.svg
    :target: https://github.com/vroncevic/gen_arm32asm/issues

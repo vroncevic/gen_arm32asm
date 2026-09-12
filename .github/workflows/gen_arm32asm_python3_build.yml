@@ -1,14 +1,14 @@
 name: gen_arm32asm_python3_build
 on:
   push:
-    branches: [ main ]
+    branches: [ master, main ]
     paths:
       - 'gen_arm32asm/**'
       - 'MANIFEST.in'
       - 'pyproject.toml'
       - 'setup.py'
   pull_request:
-    branches: [ main ]
+    branches: [ master, main ]
     paths:
       - 'gen_arm32asm/**'
       - 'MANIFEST.in'

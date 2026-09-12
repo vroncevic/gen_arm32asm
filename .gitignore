@@ -6,6 +6,6 @@ __pycache__/
 *.report
 *.xml
 *.json
-.coverage.gen_arm32asm
 .coverage
 htmlcov/
+.coverage.gen_arm32asm
